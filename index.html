@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <div class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" role="button" tabindex="0">
+        <i class="fas fa-bars"></i>
+      </div>
+      <h1 class="logo">Naftal Bosire</h1>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <aside class="sidebar" id="sidebar" aria-hidden="true">
+    <nav class="sidebar-nav">
+      <a href="#about" class="sidebar-link">About</a>
+      <a href="#projects" class="sidebar-link">Projects</a>
+      <a href="#contact" class="sidebar-link">Contact</a>
+    </nav>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <section id="hero" class="hero">
+    <div class="container">
+      <h2>Creative Frontend Developer</h2>
+      <p>Specializing in responsive web design, Android development, and desktop applications engineering.</p>
+      <a href="#projects" class="btn"><i class="fas fa-folder-open"></i> View Projects</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>Hi, I'm Naftal — a multi-platform developer passionate about building responsive, intuitive interfaces for web, Android, and desktop. I turn ideas into seamless digital experiences.</p>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <div class="project">
+          <h3>To-Do List App</h3>
+          <p>A clean task manager app with a minimalist UI, dark/light mode toggle, and localStorage support.</p>
+        </div>
+        <div class="project">
+          <h3>Weather App</h3>
+          <p>Displays real-time weather data using the OpenWeatherMap API with responsive cards and icons.</p>
+        </div>
+        <div class="project">
+          <h3>Movie Search App</h3>
+          <p>Search your favorite movies using the OMDB API. Includes loading animations and mobile-first design.</p>
+        </div>
+        <div class="project">
+          <h3>Anonymous Health App</h3>
+          <p>Consult your doctor anonymously with no fear of stigmatization</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Want to collaborate or have a project in mind? Let's connect!</p>
+      <a href="mailto:nnaftalbosire@gmail.com" class="btn"><i class="fas fa-envelope"></i> Say Hello</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Naftal Bosire . Crafted with passion.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+    function toggleSidebar() {
+      const isOpen = sidebar.classList.contains('open');
+      if (isOpen) {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        sidebar.setAttribute('aria-hidden', 'true');
+      } else {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        sidebar.setAttribute('aria-hidden', 'false');
+      }
+    }
+
+    menuToggle.addEventListener('click', toggleSidebar);
+    overlay.addEventListener('click', toggleSidebar);
+
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        sidebar.setAttribute('aria-hidden', 'true');
+      });
+    });
+
+    //allows toggle with Enter or Space key on menuToggle
+    menuToggle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleSidebar();
+      }
+    });
+  </script>
+</body>
+</html>
